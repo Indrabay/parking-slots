@@ -17,23 +17,23 @@ This is exercise project to help me build skeleton for other project based on go
 ---
 ## Database Schema
 
-customer | slots | parking_slots
-------------- | ----- | --------
-slot_id            | parking_slot_id | id
-code         | code | price
-checkin_time          | available | name
+customer      | slots           | parking_slots
+------------- | --------------- | -------------
+slot_id       | parking_slot_id | id
+code          | code            | price
+checkin_time  | available       | name
 checkout_time
 total_price
 
 ---
 ## Prerequisite
-- go
-- postgres
-- etc
+- go 1.13.5
+- postgres 13
+- ruby 2.5.3
 
 ## Setup
 
-- step 1
-- step 2
-- step 3
-- step 4
+- clone this repo `git clone git@github.com:Indrabay/parking-slots.git`
+- `cp env.sample .env`
+- setup database `rake db:create & rake db:migrate`
+- run this project `go run cmd/main.go`
