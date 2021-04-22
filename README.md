@@ -17,7 +17,7 @@ This is exercise project to help me build skeleton for other project based on go
 ---
 ## Database Schema
 
-customer      | slots           | parking_slots
+customers     | slots           | parking_slots
 ------------- | --------------- | -------------
 slot_id       | parking_slot_id | id
 code          | code            | price

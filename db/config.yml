@@ -5,9 +5,9 @@ default: &default
 
 development:
   <<: *default
-  host:     <%= ENV['DATABASE_HOST'] %>
-  port:     <%= ENV['DATABASE_PORT'] %>
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD']%>
-  pool:     <%= ENV['DATABASE_POOL'] %>
+  host:     <%= ENV['POSTGRES_DATABASE_HOST'] %>
+  port:     <%= ENV['POSTGRES_DATABASE_PORT'] %>
+  database: <%= ENV['POSTGRES_DATABASE_NAME'] %>
+  username: <%= ENV['POSTGRES_DATABASE_USERNAME'] %>
+  password: <%= ENV['POSTGRES_DATABASE_PASSWORD']%>
+  pool:     <%= ENV['POSTGRES_DATABASE_POOL'] %>
