@@ -28,9 +28,16 @@ func (p *ParkingSlotRepo) FindAll() ([]models.ParkingSlot, error) {
 // return result, nil
 // }
 
-func (p *ParkingSlotRepo) FindByID(parkingSlotID int64) (*models.ParkingSlot, error) {
-	return &models.ParkingSlot{}, nil
+func (p *ParkingSlotRepo) FindByID(parkingSlotID int64) (models.ParkingSlot, error) {
+	var parkingSlot models.ParkingSlot
+	err := p.db.Where("id = ?", parkingSlotID).First(&parkingSlot).Error
+	if err != nil {
+		return parkingSlot, err
+	}
+
+	return parkingSlot, err
 }
+
 func (p *ParkingSlotRepo) Insert(parkingSlot *models.ParkingSlot) error {
 	return p.db.Create(parkingSlot).Error
 }
