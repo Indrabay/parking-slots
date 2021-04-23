@@ -3,6 +3,9 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/indrabay/parking-slots/config/postgres"
+	handlerParking "github.com/indrabay/parking-slots/pkg/entities/parking_slot/handler"
+	repoParking "github.com/indrabay/parking-slots/pkg/entities/parking_slot/repository/mysql"
+	serviceParking "github.com/indrabay/parking-slots/pkg/entities/parking_slot/service"
 	"github.com/subosito/gotenv"
 )
 
@@ -12,16 +15,16 @@ func main() {
 		panic(err)
 	}
 
-	_, err = postgres.NewPostgres()
+	postgresDb, err := postgres.NewPostgres()
 	if err != nil {
 		panic(err)
 	}
 
+	parkingRepo := repoParking.NewParkingSlotRepo(postgresDb.DB)
+	parkingService := serviceParking.NewParkingSlotService(parkingRepo)
+	parkingHandler := handlerParking.NewParkingSlotHandler(parkingService)
+
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	r.POST("/parking-slots", parkingHandler.ParkingSlotCreate)
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
