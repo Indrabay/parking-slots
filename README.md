@@ -35,5 +35,7 @@ total_price
 
 - clone this repo `git clone git@github.com:Indrabay/parking-slots.git`
 - `cp env.sample .env`
+- `gem install bundle`
+- `bundle install`
 - setup database `rake db:create & rake db:migrate`
 - run this project `go run cmd/main.go`
